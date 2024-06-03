@@ -48,6 +48,56 @@ sudo chmod +x omniverse-launcher-linux.AppImage
 
 
 
+3. **Python module installed but not found**
+
+```bash
+Module xxx/libomni.activity.core.plugin.so remained loaded after unload request.
+```
+
+**Reason**: python path is not correctly specified if using conda 
+
+**Solution**: create environment following official `environment.yaml`
+
+[Doc](https://docs.omniverse.nvidia.com/isaacsim/latest/installation/install_python.html?highlight=conda#advanced-running-with-anaconda)
+
+ ```bash
+ cd ~/.local/share/ov/pkg/isaac_sim-2023.1.1
+ conda env create -f environment.yaml
+ ```
+
+After virtual env installation:
+
+```bash
+conda activate isaac-sim
+source $HOME/.local/share/ov/pkg/isaac_sim-2023.1.1/setup_conda_env.sh
+```
+
+Then run your python script as normal (without further need to specify python path)
+
+
+
+4. **`xxx/setup_python_env.sh not found` when `source xxx/setup_conda_env.sh`**
+
+**Reason**: not using bash as default shell, while the script takes working dirctory from bash. 
+
+Solution: replace bash related variable to with universal one
+
+Original:
+
+```bash
+#!/bin/bash
+SCRIPT_DIR="$( cd "$( dirname "$BASH_SOURCE" )" && pwd )"
+```
+
+Replace it with:
+
+```bash
+#!/bin/sh
+SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
+```
+
+ 
+
 ### [IsaacGym](https://developer.nvidia.com/isaac-gym)
 
 Apply for Isaac Gym [here](https://developer.nvidia.com/isaac-gym)
@@ -70,6 +120,8 @@ cd python && pip install -e .
 # Check installation
 pip show isaacgym
 ```
+
+
 
 
 
