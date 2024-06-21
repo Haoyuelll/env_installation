@@ -2,6 +2,59 @@
 
 Fix your proxy selection for Chat
 
+### Step 0: install clash (linux)
+
+- Install clash to system
+
+```bash
+sudo cp magic /usr/local/bin/clash
+```
+
+- Add `config.yaml` (find this from your service provider)
+- Check availability by running `clash`
+
+
+
+#### Optional: add clash to system service
+
+```bash
+sudo gedit /etc/systemd/system/clash.service
+```
+
+Replace [path-to-config.yaml] with your own path
+
+ ```
+ Description=Clash - A rule-based tunnel in Go
+ 
+ Documentation=https://github.com/Dreamacro/clash/wiki
+ 
+ [Service]
+ 
+ OOMScoreAdjust=-1000
+ 
+ ExecStart=/usr/local/bin/clash -f [path-to-config.yaml]
+ 
+ Restart=on-failure
+ 
+ RestartSec=5
+ 
+ [Install]
+ 
+ WantedBy=multi-user.target
+ ```
+
+
+
+Run:
+
+```bash
+sudo systemctl enable clash
+sudo systemctl start clash
+sudo systemctl status clash
+```
+
+
+
 
 
 ### Step 1: configure new proxy group
