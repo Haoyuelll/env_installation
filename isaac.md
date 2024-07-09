@@ -46,6 +46,8 @@ sudo chmod +x omniverse-launcher-linux.AppImage
 
 **Solution**: VPN
 
+- [Linux-clash guide](https://github.com/Haoyuelll/env_installation/blob/main/magic/magic.md) 
+
 
 
 3. **Python module installed but not found**
@@ -54,25 +56,43 @@ sudo chmod +x omniverse-launcher-linux.AppImage
 Module xxx/libomni.activity.core.plugin.so remained loaded after unload request.
 ```
 
-**Reason**: python path is not correctly specified if using conda 
+**Reason**: python path is not correctly specified 
 
-**Solution**: create environment following official `environment.yaml`
+**Solution**: documentation for [python installation](https://docs.omniverse.nvidia.com/isaacsim/latest/installation/install_python.html) / [anaconda specific](https://docs.omniverse.nvidia.com/isaacsim/latest/installation/install_python.html?highlight=conda#advanced-running-with-anaconda) 
 
-[Doc](https://docs.omniverse.nvidia.com/isaacsim/latest/installation/install_python.html?highlight=conda#advanced-running-with-anaconda)
+**Tips**: 
 
- ```bash
- cd ~/.local/share/ov/pkg/isaac_sim-2023.1.1
- conda env create -f environment.yaml
- ```
+- ***System python***
 
-After virtual env installation:
+  Specify python path before running python script:
 
-```bash
-conda activate isaac-sim
-source $HOME/.local/share/ov/pkg/isaac_sim-2023.1.1/setup_conda_env.sh
-```
+  ```bash
+  $HOME/.local/share/ov/pkg/isaac_sim-2023.1.1/python.sh [script-to-run].py
+  ```
 
-Then run your python script as normal (without further need to specify python path)
+  
+
+- ***Conda python***
+
+  Create environment following official `environment.yaml`
+
+  ```bash
+  cd ~/.local/share/ov/pkg/isaac_sim-2023.1.1
+  conda env create -f environment.yml
+  
+  # Alternatively you may use the command below to update your current venv:
+  conda activate [your-env]
+  conda env update --file ~/.local/share/ov/pkg/isaac_sim-2023.1.1/environment.yml
+  ```
+
+  After virtual env installation:
+
+  ```bash
+  conda activate isaac-sim  # replace this with your env name
+  source $HOME/.local/share/ov/pkg/isaac_sim-2023.1.1/setup_conda_env.sh
+  ```
+
+  Then run your python script as normal (without further need to specify python path)
 
 
 
@@ -80,16 +100,16 @@ Then run your python script as normal (without further need to specify python pa
 
 **Reason**: not using bash as default shell, while the script takes working dirctory from bash. 
 
-Solution: replace bash related variable to with universal one
+**Solution**: replace bash related variable to with universal one
 
-Original:
+​	Original:
 
 ```bash
 #!/bin/bash
 SCRIPT_DIR="$( cd "$( dirname "$BASH_SOURCE" )" && pwd )"
 ```
 
-Replace it with:
+​	Replace it with:
 
 ```bash
 #!/bin/sh

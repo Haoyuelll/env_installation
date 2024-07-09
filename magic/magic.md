@@ -31,7 +31,11 @@ sudo cp magic /usr/local/bin/clash
 
   <img src="./mp.png" alt="manual_proxy" style="zoom:50%;" />
 
-- Check availability by running `clash`
+- Check availability
+
+  - One-time command: `[path to clash] -f config.yaml`
+  - (Optional) Add service follow the instructions below 
+
 
 
 
