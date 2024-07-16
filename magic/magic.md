@@ -130,6 +130,7 @@ Add the following lines into `rules`:
 ```yaml
   - DOMAIN-SUFFIX,openai.com,ChatGPT
   - DOMAIN-SUFFIX,chatgpt.com,ChatGPT
+  - DOMAIN-SUFFIX,nvidia.com,ChatGPT
   - DOMAIN-SUFFIX,gravatar.com,ChatGPT
   - DOMAIN-SUFFIX,oaistatic.com,ChatGPT
   - DOMAIN-SUFFIX,scholar.google.com,ChatGPT

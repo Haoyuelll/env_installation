@@ -1,4 +1,4 @@
-# Pkgs that may take effort to install
+# Pkgs that may take effort to install/work
 
 ### PyTorch3D<a name="pytorch3d"></a>
 
@@ -29,3 +29,22 @@
 
   _**Tips:** you may only include alternative [implementation](./pytorch3d_transforms.py) for `pytorch3d.transforms` to save the effort when not using diffusion-based method_
 
+
+
+### PyTorch Robot Kinematics<a name="pyk"></a>
+
+Github: **[pytorch_kinematics](https://github.com/UM-ARM-Lab/pytorch_kinematics)**, `pip install pytorch-kinematics`
+
+_Easy to install, difficult to use..._
+
+#### Err1: device error
+
+**Reason**: device is not specified for kinematics chain build from URDF
+
+**Solution**: add device to functions in `urdf.py` (original [file](https://github.com/UM-ARM-Lab/pytorch_kinematics/blob/7d4e197e6bbc13f8ffd77773adc23631052bb072/src/pytorch_kinematics/urdf.py), modified example [here](./urdf.py))
+
+
+
+#### Err2: shape error
+
+**Reason**: batch info needs to be specified with an extra argument in [`Transform3d`](https://github.com/UM-ARM-Lab/pytorch_kinematics/blob/7d4e197e6bbc13f8ffd77773adc23631052bb072/src/pytorch_kinematics/transforms/transform3d.py#L163)

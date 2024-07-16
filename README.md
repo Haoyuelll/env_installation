@@ -16,4 +16,5 @@
 
 - **[Others](./other_pkg/other_pkg.md)**
   - pytorch3d
+  - pytorch_kinematics
 
