@@ -12,7 +12,10 @@
 ### List of contents
 
 - **[Mujoco](./mujoco.md)**
-- **[Isaac](./isaac.md)**
+- **Isaac**
+  - [Installation](./isaac.md)
+
+  - [Usage](./omni_rltask.md) (RLTask usage)
 
 - **[Others](./other_pkg/other_pkg.md)**
   - pytorch3d
