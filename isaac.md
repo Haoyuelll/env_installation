@@ -67,7 +67,7 @@ Module xxx/libomni.activity.core.plugin.so remained loaded after unload request.
   Specify python path before running python script:
 
   ```bash
-  $HOME/.local/share/ov/pkg/isaac_sim-2023.1.1/python.sh [script-to-run].py
+  $HOME/.local/share/ov/pkg/isaac-sim-2023.1.1/python.sh [script-to-run].py
   ```
 
   
@@ -77,19 +77,19 @@ Module xxx/libomni.activity.core.plugin.so remained loaded after unload request.
   Create environment following official `environment.yaml`
 
   ```bash
-  cd ~/.local/share/ov/pkg/isaac_sim-2023.1.1
+  cd ~/.local/share/ov/pkg/isaac-sim-2023.1.1
   conda env create -f environment.yml
   
   # Alternatively you may use the command below to update your current venv:
   conda activate [your-env]
-  conda env update --file ~/.local/share/ov/pkg/isaac_sim-2023.1.1/environment.yml
+  conda env update --file ~/.local/share/ov/pkg/isaac-sim-2023.1.1/environment.yml
   ```
 
   After virtual env installation:
 
   ```bash
   conda activate isaac-sim  # replace this with your env name
-  source $HOME/.local/share/ov/pkg/isaac_sim-2023.1.1/setup_conda_env.sh
+  source $HOME/.local/share/ov/pkg/isaac-sim-2023.1.1/setup_conda_env.sh
   ```
 
   Then run your python script as normal (without further need to specify python path)
@@ -102,21 +102,53 @@ Module xxx/libomni.activity.core.plugin.so remained loaded after unload request.
 
 **Solution**: replace bash related variable to with universal one
 
-​	Original:
+In `setup_conda_env.sh`:
 
-```bash
-#!/bin/bash
-SCRIPT_DIR="$( cd "$( dirname "$BASH_SOURCE" )" && pwd )"
-```
+- Original:
 
-​	Replace it with:
+  ```bash
+  #!/bin/bash
+  SCRIPT_DIR="$( cd "$( dirname "$BASH_SOURCE" )" && pwd )"
+  ```
 
-```bash
-#!/bin/sh
-SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
-```
+- Replace it with:
 
- 
+  ```bash
+  #!/bin/sh
+  SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
+  ```
+
+  
+
+In `setup_python_env.sh` 
+
+- Original:
+
+  ```bash
+  #!/bin/bash
+  SCRIPT_DIR="$( dirname "$BASH_SOURCE" )"
+  ```
+
+- Replace it with:
+
+  ```bash
+  #!/bin/sh
+  SCRIPT_DIR="$( dirname "$0")"
+  ```
+
+
+
+#### Terminal launch
+
+Start Isaac Sim with `$HOME/.local/share/ov/pkg/isaac-sim-2023.1.1/isaac-sim.sh`
+
+
+
+5. `segmentation fault (core dumped)`
+
+**Reason**: check if there is duplicated launch of simulation app in your pipeline.
+
+
 
 ### [IsaacGym](https://developer.nvidia.com/isaac-gym)
 
@@ -142,6 +174,8 @@ pip show isaacgym
 ```
 
 
+
+#### RL usage: **[IsaacGymEnvs](https://github.com/isaac-sim/IsaacGymEnvs)**
 
 
 
