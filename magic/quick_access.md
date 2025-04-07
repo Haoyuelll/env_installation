@@ -1,4 +1,6 @@
-# Github quick access
+# Quick access
+
+## Github
 
 ### https://github.moeyy.xyz/
 - *Good for all*
@@ -17,6 +19,13 @@
 
 ### https://githubfast.com
 - **Tips**:
-  - Partly available
+  - Partly available, no web ui
   - https only
 - **Usage**: Change `github.com` into `githubfast.com`
+
+
+
+## HuggingFace
+
+### https://hf-mirror.com/
+Change `https://huggingface.co/` into `https://hf-mirror.com/`
