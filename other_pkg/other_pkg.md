@@ -26,6 +26,11 @@
 
 
 - Build from source: [CSDN blog](https://blog.csdn.net/PascalBUAA/article/details/123408759#t7)
+  ```bash
+  pip install git+https://github.com/facebookresearch/pytorch3d.git
+  # or use mirror source
+  pip install git+https://github.moeyy.xyz/https://github.com/facebookresearch/pytorch3d.git
+  ```
 
   _**Tips:** you may only include alternative [implementation](./pytorch3d_transforms.py) for `pytorch3d.transforms` to save the effort when not using diffusion-based method_
 
